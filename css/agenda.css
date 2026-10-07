@@ -1,0 +1,782 @@
+/* ==========================================================================
+   BI UNHAS STUDIO — ESTILOS DA AGENDA ONLINE (PÁGINA 2)
+   Interface de Agendamento Otimizada, Rápida, Intuitiva e Sem Bloatware
+   ========================================================================== */
+
+.agenda-page-hero {
+  padding: 3rem 0 2rem 0;
+  text-align: center;
+}
+
+.agenda-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin-bottom: 5rem;
+}
+
+/* 1. INDICADOR DE PROGRESSO DOS PASSOS */
+.booking-steps-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 1.2rem 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: var(--transition);
+}
+
+.step-indicator.active {
+  opacity: 1;
+}
+
+.step-indicator.completed {
+  opacity: 0.9;
+  color: var(--lilac-dark);
+}
+
+.step-num-bubble {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--bg-lavender);
+  border: 1.5px solid var(--border-subtle);
+  color: var(--purple-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: var(--transition);
+}
+
+.step-indicator.active .step-num-bubble {
+  background: var(--purple-deep);
+  color: #FFFFFF;
+  border-color: var(--purple-deep);
+  box-shadow: 0 4px 12px rgba(58, 30, 67, 0.25);
+}
+
+.step-indicator.completed .step-num-bubble {
+  background: var(--lilac);
+  color: #FFFFFF;
+  border-color: var(--lilac);
+}
+
+.step-info-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-title-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--purple-deep);
+}
+
+.step-sub-text {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.step-connector-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border-subtle);
+  margin: 0 1rem;
+}
+
+/* Painel Principal do Agendamento */
+.booking-main-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.step-section {
+  display: none;
+  animation: fadeInStep 0.35s ease forwards;
+}
+
+.step-section.active {
+  display: block;
+}
+
+@keyframes fadeInStep {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-card-box {
+  background: #FFFFFF;
+  border-radius: 28px;
+  border: 1px solid var(--border-subtle);
+  padding: 2.2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.step-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.step-card-title h3 {
+  font-size: 1.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.step-card-title h3 i {
+  color: var(--lilac-dark);
+}
+
+/* 2. CATÁLOGO DE SERVIÇOS SELECIONÁVEIS (PASSO 1) */
+.services-category-tabs {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.6rem;
+  scrollbar-width: none;
+}
+
+.cat-tab-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: var(--bg-lavender);
+  color: var(--purple-medium);
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.cat-tab-btn:hover, .cat-tab-btn.active {
+  background: var(--purple-deep);
+  color: #FFFFFF;
+}
+
+.services-selectable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.service-select-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: 20px;
+  border: 1.5px solid var(--border-subtle);
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.service-select-item:hover {
+  border-color: var(--lilac);
+  box-shadow: 0 6px 18px rgba(189, 147, 222, 0.18);
+  transform: translateY(-2px);
+}
+
+.service-select-item.selected {
+  border-color: var(--purple-deep);
+  background: #FAF5FD;
+  box-shadow: 0 6px 20px rgba(58, 30, 67, 0.12);
+}
+
+.service-thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.service-main-meta h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--purple-deep);
+  margin-bottom: 4px;
+}
+
+.service-main-meta p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.service-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.badge-duration {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.service-price-column {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.service-price-amount {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--purple-deep);
+}
+
+.check-indicator {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--border-subtle);
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  transition: var(--transition-bounce);
+}
+
+.service-select-item.selected .check-indicator {
+  background: var(--purple-deep);
+  border-color: var(--purple-deep);
+  color: #FFFFFF;
+  transform: scale(1.1);
+}
+
+/* 3. CALENDÁRIO INTERATIVO & SLOTS DE HORÁRIO (PASSO 2) */
+.date-time-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.calendar-header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.calendar-header-nav h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--purple-deep);
+}
+
+.cal-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-lavender);
+  color: var(--purple-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cal-nav-btn:hover {
+  background: var(--purple-deep);
+  color: #FFFFFF;
+}
+
+/* Grid de Dias da Semana */
+.calendar-weekdays-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.calendar-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.day-cell {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  transition: var(--transition);
+  position: relative;
+}
+
+.day-cell:hover:not(.disabled) {
+  border-color: var(--lilac);
+  background: var(--bg-lavender);
+  transform: scale(1.05);
+}
+
+.day-cell.selected {
+  background: var(--purple-deep);
+  color: #FFFFFF;
+  border-color: var(--purple-deep);
+  box-shadow: 0 4px 14px rgba(58, 30, 67, 0.28);
+}
+
+.day-cell.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background: #F8F8F8;
+  border-color: transparent;
+}
+
+.day-cell.has-available::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.day-cell.selected.has-available::after {
+  background: #FFFFFF;
+}
+
+/* Seleção de Horários Organizada */
+.time-slots-wrapper {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.5rem;
+}
+
+.time-slot-period {
+  margin-bottom: 1.2rem;
+}
+
+.period-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--purple-deep);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.slots-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.time-chip {
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--radius-full);
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-subtle);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--purple-deep);
+  cursor: pointer;
+  transition: var(--transition-bounce);
+}
+
+.time-chip:hover {
+  border-color: var(--lilac);
+  background: var(--bg-lavender);
+  transform: translateY(-2px);
+}
+
+.time-chip.selected {
+  background: var(--purple-deep);
+  border-color: var(--purple-deep);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(58, 30, 67, 0.25);
+}
+
+.time-chip.booked {
+  opacity: 0.35;
+  cursor: not-allowed;
+  text-decoration: line-through;
+  background: #F8F8F8;
+}
+
+/* 4. SELEÇÃO DE PROFISSIONAL (PASSO 3) */
+.professionals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.pro-card-option {
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 1.4rem;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pro-card-option:hover {
+  border-color: var(--lilac);
+  transform: translateY(-2px);
+}
+
+.pro-card-option.selected {
+  border-color: var(--purple-deep);
+  background: #FAF5FD;
+  box-shadow: 0 6px 20px rgba(58, 30, 67, 0.12);
+}
+
+.pro-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--lilac);
+}
+
+.pro-details h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--purple-deep);
+}
+
+.pro-details p {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.pro-tag-specialty {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--rose-gold-dark);
+  margin-top: 3px;
+}
+
+/* 5. FORMULÁRIO DE DADOS DA CLIENTE (PASSO 4) */
+.client-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-full-width {
+  grid-column: span 2;
+}
+
+.form-group-custom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-label-custom {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--purple-deep);
+}
+
+.form-input-custom, .form-textarea-custom, .form-select-custom {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-subtle);
+  background: #FFFFFF;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--purple-deep);
+  outline: none;
+  transition: var(--transition);
+}
+
+.form-input-custom:focus, .form-textarea-custom:focus, .form-select-custom:focus {
+  border-color: var(--lilac);
+  box-shadow: 0 0 0 4px var(--lilac-glow);
+}
+
+.form-textarea-custom {
+  resize: vertical;
+  min-height: 85px;
+}
+
+.switch-removal-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  background: var(--bg-lavender);
+  border-radius: var(--radius-md);
+  margin-top: 0.4rem;
+}
+
+/* 6. RESUMO LATERAL FLUTUANTE (CART SUMMARY) */
+.booking-summary-sidebar {
+  position: sticky;
+  top: 90px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 28px;
+  padding: 2.2rem 1.8rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.summary-header {
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1rem;
+}
+
+.summary-header h4 {
+  font-size: 1.25rem;
+  color: var(--purple-deep);
+}
+
+.summary-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.summary-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.86rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px dashed rgba(189, 147, 222, 0.2);
+}
+
+.summary-item-name {
+  font-weight: 600;
+  color: var(--purple-deep);
+}
+
+.summary-item-price {
+  font-weight: 700;
+  color: var(--purple-deep);
+}
+
+.summary-empty-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.summary-details-box {
+  background: var(--bg-lavender);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+}
+
+.summary-detail-line {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-secondary);
+}
+
+.summary-detail-line i {
+  color: var(--lilac-dark);
+}
+
+.summary-totals-row {
+  border-top: 1.5px solid var(--border-subtle);
+  padding-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.total-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--purple-deep);
+}
+
+.total-amount {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--purple-deep);
+}
+
+.total-duration-badge {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: -8px;
+}
+
+/* Botões de Ação do Agendamento */
+.booking-actions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.btn-proceed-step {
+  width: 100%;
+  padding: 0.95rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-medium) 100%);
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  box-shadow: 0 6px 20px rgba(58, 30, 67, 0.25);
+  transition: var(--transition-bounce);
+  cursor: pointer;
+}
+
+.btn-proceed-step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(58, 30, 67, 0.35);
+  background: linear-gradient(135deg, var(--purple-medium) 0%, var(--lilac-hover) 100%);
+}
+
+.btn-prev-step {
+  padding: 0.7rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-prev-step:hover {
+  color: var(--purple-deep);
+}
+
+/* Cartão de Sucesso / Confirmação Final */
+.booking-success-box {
+  text-align: center;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.success-check-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.15);
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  animation: pulseGreen 2s infinite;
+}
+
+.voucher-ticket {
+  background: #FFFFFF;
+  border: 2px dashed var(--border-subtle);
+  border-radius: 20px;
+  padding: 1.8rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Responsividade da Agenda */
+@media (max-width: 992px) {
+  .agenda-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .booking-summary-sidebar {
+    position: static;
+  }
+  
+  .service-select-item {
+    grid-template-columns: 70px 1fr;
+  }
+  
+  .service-price-column {
+    grid-column: span 2;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 0.8rem;
+  }
+  
+  .client-form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-full-width {
+    grid-column: span 1;
+  }
+  
+  .booking-steps-bar {
+    padding: 1rem 1.2rem;
+  }
+  
+  .step-sub-text {
+    display: none;
+  }
+}
